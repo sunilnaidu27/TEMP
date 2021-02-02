@@ -1,0 +1,56 @@
+package testScripts;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import applicationPages.DLModule;
+import applicationPages.FactoryUtilities;
+import applicationPages.Flows;
+import applicationPages.LoginRTO;
+import frameworkLibrary.BaseClass;
+
+public class NewDL extends BaseClass {
+	WebDriver currentdriver;
+	DLModule dl;
+	FactoryUtilities Utility;
+
+	@BeforeMethod
+	public void before() throws IOException {
+		System.out.println("Before Method");
+
+	}
+
+	@Test(invocationCount = 1)
+	public void NewDL_Public() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
+
+		dl = new DLModule(currentdriver);
+		dl.StartAPP();
+		dl.PerformJob();
+		dl.Initiating_DL();
+		dl.Validating_Flows();
+	
+	}
+	
+	@Test(invocationCount = 1)
+	public void DLBacklog() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
+
+		dl = new DLModule(currentdriver);
+		dl.StartAPP();
+		dl.Initiating_DLBacklog();
+		
+		
+	}
+	
+
+	@AfterMethod
+	public void after() {
+		System.out.println("After Method");
+		//quitdriver(currentdriver);
+	}
+
+}
