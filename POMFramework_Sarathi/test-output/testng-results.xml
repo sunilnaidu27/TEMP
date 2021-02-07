@@ -1,69 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="1" failed="0" total="1" passed="0">
+<testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="12258" started-at="2021-02-02T12:42:46Z" finished-at="2021-02-02T12:42:58Z">
+  <suite name="Suite" duration-ms="78534" started-at="2021-02-07T08:09:56Z" finished-at="2021-02-07T08:11:14Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="12258" started-at="2021-02-02T12:42:46Z" finished-at="2021-02-02T12:42:58Z">
+    <test name="Test" duration-ms="78534" started-at="2021-02-07T08:09:56Z" finished-at="2021-02-07T08:11:14Z">
       <class name="testScripts.NewLL">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:testScripts.NewLL@dc24521]" name="beforesuite" is-config="true" duration-ms="335" started-at="2021-02-02T18:12:45Z" finished-at="2021-02-02T18:12:46Z">
+        <test-method status="PASS" signature="beforesuite()[pri:0, instance:testScripts.NewLL@64bfbc86]" name="beforesuite" is-config="true" duration-ms="507" started-at="2021-02-07T13:39:55Z" finished-at="2021-02-07T13:39:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforesuite -->
-        <test-method status="PASS" signature="beforemethod(org.testng.ITestContext)[pri:0, instance:testScripts.NewLL@dc24521]" name="beforemethod" is-config="true" duration-ms="1881" started-at="2021-02-02T18:12:46Z" finished-at="2021-02-02T18:12:47Z">
+        <test-method status="PASS" signature="beforemethod(org.testng.ITestContext)[pri:0, instance:testScripts.NewLL@64bfbc86]" name="beforemethod" is-config="true" duration-ms="2312" started-at="2021-02-07T13:39:56Z" finished-at="2021-02-07T13:39:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@6bcbf05b]]>
+                <![CDATA[org.testng.TestRunner@73818435]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforemethod -->
-        <test-method status="FAIL" signature="Predatacheck()[pri:0, instance:testScripts.NewLL@dc24521]" name="Predatacheck" is-config="true" duration-ms="0" started-at="2021-02-02T18:12:47Z" finished-at="2021-02-02T18:12:47Z">
-          <exception class="org.openqa.selenium.NoSuchWindowException">
+        <test-method status="PASS" signature="Predatacheck()[pri:0, instance:testScripts.NewLL@64bfbc86]" name="Predatacheck" is-config="true" duration-ms="18463" started-at="2021-02-07T13:39:58Z" finished-at="2021-02-07T13:40:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Predatacheck -->
+        <test-method status="FAIL" signature="NewLL_Public()[pri:0, instance:testScripts.NewLL@64bfbc86]" name="NewLL_Public" duration-ms="56670" started-at="2021-02-07T13:40:17Z" finished-at="2021-02-07T13:41:13Z">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=88.0.4324.104)
-Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'DESKTOP-FEL46G5', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_261'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 88.0.4324.104, chrome: {chromedriverVersion: 87.0.4280.20 (c99e81631faa0..., userDataDir: C:\Users\Candy\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:57841}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: accept and notify, webauthn:virtualAuthenticators: true}
-Session ID: 075d50fb644991126b781ae0c5f4ec08]]>
+              <![CDATA[expected [true] but found [false]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=88.0.4324.104)
-Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'DESKTOP-FEL46G5', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_261'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 88.0.4324.104, chrome: {chromedriverVersion: 87.0.4280.20 (c99e81631faa0..., userDataDir: C:\Users\Candy\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:57841}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: accept and notify, webauthn:virtualAuthenticators: true}
-Session ID: 075d50fb644991126b781ae0c5f4ec08
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:833)
-	at testScripts.NewLL.Predatacheck(NewLL.java:69)
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:125)
+	at org.testng.Assert.assertEquals(Assert.java:288)
+	at org.testng.Assert.assertEquals(Assert.java:298)
+	at frameworkLibrary.ReportLibrary.reportEvent(ReportLibrary.java:72)
+	at applicationPages.NewLLRegistrtionPage.Set_State(NewLLRegistrtionPage.java:365)
+	at applicationPages.LLModule.EnterApplicationFormDetails(LLModule.java:438)
+	at applicationPages.LLModule.Before_ApplicationSubmission_Checks(LLModule.java:364)
+	at applicationPages.LLModule.Initiate_Process(LLModule.java:204)
+	at testScripts.NewLL.NewLL_Public(NewLL.java:97)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:510)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:211)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:585)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
 	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
 	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
@@ -84,27 +70,35 @@ Session ID: 075d50fb644991126b781ae0c5f4ec08
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Predatacheck -->
-        <test-method status="SKIP" signature="NewLL_Public()[pri:0, instance:testScripts.NewLL@dc24521]" name="NewLL_Public" duration-ms="9" started-at="2021-02-02T18:12:58Z" finished-at="2021-02-02T18:12:58Z">
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- NewLL_Public -->
-        <test-method status="SKIP" signature="CloseBrowser()[pri:0, instance:testScripts.NewLL@dc24521]" name="CloseBrowser" is-config="true" duration-ms="0" started-at="2021-02-02T18:12:58Z" finished-at="2021-02-02T18:12:58Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CloseBrowser -->
-        <test-method status="SKIP" signature="aftermethod(org.testng.ITestResult, org.testng.ITestContext)[pri:0, instance:testScripts.NewLL@dc24521]" name="aftermethod" is-config="true" duration-ms="0" started-at="2021-02-02T18:12:58Z" finished-at="2021-02-02T18:12:58Z">
+        <test-method status="PASS" signature="aftermethod(org.testng.ITestResult, org.testng.ITestContext)[pri:0, instance:testScripts.NewLL@64bfbc86]" name="aftermethod" is-config="true" duration-ms="1010" started-at="2021-02-07T13:41:13Z" finished-at="2021-02-07T13:41:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=NewLL_Public status=FAILURE method=NewLL.NewLL_Public()[pri:0, instance:testScripts.NewLL@64bfbc86] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@73818435]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- aftermethod -->
-        <test-method status="SKIP" signature="aftersuite()[pri:0, instance:testScripts.NewLL@dc24521]" name="aftersuite" is-config="true" duration-ms="0" started-at="2021-02-02T18:12:58Z" finished-at="2021-02-02T18:12:58Z">
+        <test-method status="PASS" signature="CloseBrowser()[pri:0, instance:testScripts.NewLL@64bfbc86]" name="CloseBrowser" is-config="true" duration-ms="0" started-at="2021-02-07T13:41:13Z" finished-at="2021-02-07T13:41:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CloseBrowser -->
+        <test-method status="PASS" signature="aftersuite()[pri:0, instance:testScripts.NewLL@64bfbc86]" name="aftersuite" is-config="true" duration-ms="5666" started-at="2021-02-07T13:41:14Z" finished-at="2021-02-07T13:41:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- aftersuite -->
       </class> <!-- testScripts.NewLL -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

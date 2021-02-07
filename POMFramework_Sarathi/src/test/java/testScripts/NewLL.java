@@ -6,7 +6,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.Hashtable;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -51,44 +50,43 @@ public class NewLL extends BaseClass {
 
 	@BeforeMethod
 	public void Predatacheck() throws IOException {
-			loaddata();
-			System.setProperty("webdriver.chrome.driver", "BrowserServers\\chromedriver.exe");
-			ChromeOptions capability = new ChromeOptions();
-			capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-			capability.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
-			capability.addArguments("use-fake-device-for-media-stream");
-			capability.addArguments("use-fake-ui-for-media-stream");
-			capability.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT_AND_NOTIFY);
-			Map<String, Object> preferences = new Hashtable<String, Object>();
-			capability.setExperimentalOption("prefs", preferences);
-			preferences.put("plugins.always_open_pdf_externally", true);
-			driver = new ChromeDriver(capability);
-			String env = getdata("ApplicationEnvironment");
-			if (env.equalsIgnoreCase("SarathiCOV")) {
-				driver.get(prop.getProperty("SarathiCOV"));
-				driver.manage().window().maximize();
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-				System.out.println("Welcome to SarathiCOV");
-			} else if (env.equalsIgnoreCase("SarathiProd")) {
-				driver.get(prop.getProperty("SarathiProd"));
-				driver.manage().window().maximize();
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-				System.out.println("Welcome to Sarathiprod");
-			} else if (env.equalsIgnoreCase("CAS_SarathiCOV")) {
-				driver.get(prop.getProperty("CAS_SarathiCOV"));
-				driver.manage().window().maximize();
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-				System.out.println("Welcome to CAS_SarathiCOV");
-			} else if (env.equalsIgnoreCase("CAS_SarathiProd")) {
-				driver.get(prop.getProperty("CAS_SarathiProd"));
-				driver.manage().window().maximize();
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-				System.out.println("Welcome to CAS_SarathiProd");
-			} else {
-				System.out.println("Application URL is not matched.Please try again");
-			}
-		
-		
+		loaddata();
+		System.setProperty("webdriver.chrome.driver", "BrowserServers\\chromedriver.exe");
+		ChromeOptions capability = new ChromeOptions();
+		capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		capability.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+		capability.addArguments("use-fake-device-for-media-stream");
+		capability.addArguments("use-fake-ui-for-media-stream");
+		capability.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT_AND_NOTIFY);
+		Map<String, Object> preferences = new Hashtable<String, Object>();
+		capability.setExperimentalOption("prefs", preferences);
+		preferences.put("plugins.always_open_pdf_externally", true);
+		driver = new ChromeDriver(capability);
+		String env = getdata("ApplicationEnvironment");
+		if (env.equalsIgnoreCase("SarathiCOV")) {
+			driver.get(prop.getProperty("SarathiCOV"));
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			System.out.println("Welcome to SarathiCOV");
+		} else if (env.equalsIgnoreCase("SarathiProd")) {
+			driver.get(prop.getProperty("SarathiProd"));
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			System.out.println("Welcome to Sarathiprod");
+		} else if (env.equalsIgnoreCase("CAS_SarathiCOV")) {
+			driver.get(prop.getProperty("CAS_SarathiCOV"));
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			System.out.println("Welcome to CAS_SarathiCOV");
+		} else if (env.equalsIgnoreCase("CAS_SarathiProd")) {
+			driver.get(prop.getProperty("CAS_SarathiProd"));
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			System.out.println("Welcome to CAS_SarathiProd");
+		} else {
+			System.out.println("Application URL is not matched.Please try again");
+		}
+
 	}
 
 	@Test(invocationCount = 1)
@@ -98,14 +96,12 @@ public class NewLL extends BaseClass {
 		llmodule.SelectState();
 		llmodule.Initiate_Process();
 		llmodule.Validating_Flows();
-
 	}
 
-	@Test(invocationCount = 1)
+	@Test(invocationCount = 10)
 	public void LLBacklog() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
 		llmodule = new LLModule(driver);
 		llmodule.ArrangeDataSet();
-		//llmodule.StartAPP();
 		llmodule.Submit_LLBacklog();
 
 	}
@@ -113,9 +109,9 @@ public class NewLL extends BaseClass {
 	@Test(invocationCount = 1)
 	public void ApplicationStatus() {
 		appstatus = new ApplicationStatusPage(driver);
-		
+
 		try {
-		//	llmodule.StartAPP();
+			// llmodule.StartAPP();
 			llmodule = new LLModule(driver);
 			llmodule.SelectState();
 
@@ -237,51 +233,19 @@ public class NewLL extends BaseClass {
 
 	@Test(invocationCount = 1)
 	public void URLNavigations() throws IOException {
+		llmodule = new LLModule(driver);
+		// llmodule.ArrangeDataSet();
+		try {
+			llmodule.SelectState();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		driver.close();
 
-		System.setProperty("webdriver.chrome.driver", "BrowserServers\\chromedriver.exe");
-		ChromeOptions capability = new ChromeOptions();
-		capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-		capability.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
-		capability.addArguments("use-fake-device-for-media-stream");
-		capability.addArguments("use-fake-ui-for-media-stream");
-		Map<String, Object> preferences = new Hashtable<String, Object>();
-		capability.setExperimentalOption("prefs", preferences);
-		preferences.put("plugins.always_open_pdf_externally", true);
-		WebDriver driver = new ChromeDriver(capability);
-		driver.get("https://sarathi.parivahan.gov.in/sarathiservice/stateSelection.do");
-		WebElement st = driver.findElement(By.xpath("//select[@name='stName']"));
-		Select s = new Select(st);
-		loaddata();
-		s.selectByVisibleText(prop.getProperty(getdata("State")));
-
-		driver.navigate().to("https://sarathi.parivahan.gov.in/sarathidlws");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/slots");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/sarathiLL");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/stallcontroller");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/s5stall");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/paymentscov");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/SarathiReport");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/sarathisupport");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/sarathi"); // 404
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/scrutiny"); // 404
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/sarathiservicecov1");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/sarathiservicecov");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/cas");
-		wait(5);
-		driver.navigate().to("https://sarathi.parivahan.gov.in/sarathiservice");
-		wait(5);
 	}
 
 	@AfterMethod

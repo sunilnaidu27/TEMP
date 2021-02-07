@@ -37,7 +37,7 @@ public class NewDL extends BaseClass {
 
 	}
 
-	@Test(invocationCount = 1)
+	@Test(invocationCount = 9)
 	public void NewDL_Public() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
 
 		dl = new DLModule(currentdriver);
@@ -48,7 +48,7 @@ public class NewDL extends BaseClass {
 
 	}
 
-	@Test(invocationCount = 1)
+	@Test(invocationCount = 16)
 	public void DLBacklog() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
 
 		dl = new DLModule(currentdriver);
@@ -57,7 +57,7 @@ public class NewDL extends BaseClass {
 
 	}
 
-	@Test(invocationCount = 49)
+	@Test(invocationCount = 4)
 	public void RTOApplicationStatus() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
 
 		System.setProperty("webdriver.gecko.driver", "BrowserServers\\geckodriver.exe");

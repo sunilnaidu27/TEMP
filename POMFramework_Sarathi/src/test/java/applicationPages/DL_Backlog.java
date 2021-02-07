@@ -354,7 +354,7 @@ public class DL_Backlog extends BasePage {
 				if (!options.get(1).getText().contains("Select")) {
 					System.out.println(options.get(1).getText());
 					District.selectByIndex(1);
-					Thread.sleep(3000);
+					Thread.sleep(5000);
 					WebElement SubDist = driver.findElement(By.xpath("//select[@id='prSubDistrict']	"));
 					Select subdist = new Select(SubDist);
 					List<WebElement> Subdistoptions = subdist.getOptions();

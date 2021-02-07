@@ -427,15 +427,15 @@ public class Flows extends BasePage {
 
 	public void Scrutiny() {
 		scrooldown(driver);
-		if (isDisplayed(labelforPhotoSign) == false) {
+		//if (isDisplayed(labelforPhotoSign) == false) {
 			Scrutiny = new ScrutinyPage(driver);
 			Scrutiny.Clickon_VerificationofDocuments_Link();
 			Scrutiny.Clickon_prooflinks();
 			Scrutiny.Clickon_Scrutinybutton();
-		} else {
-			System.out.println("Displaying message --> Photo and Signature are Visible Properly");
-			driver.findElement(By.xpath("//input[@type='radio'][1]")).click();
-		}
+		//} else {
+		//	System.out.println("Displaying message --> Photo and Signature are Visible Properly");
+		//	driver.findElement(By.xpath("//input[@type='radio'][1]")).click();
+		//}
 
 	}
 

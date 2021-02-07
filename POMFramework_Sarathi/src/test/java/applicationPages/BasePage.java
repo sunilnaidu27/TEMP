@@ -22,17 +22,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
-import javax.swing.JOptionPane;
-
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -42,21 +37,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
 import com.github.javafaker.Faker;
-
 import frameworkLibrary.FrameworkVariables;
 import frameworkLibrary.ReportLibrary;
 
@@ -73,7 +57,7 @@ public class BasePage extends ReportLibrary {
 			Endorsement_to_drive_in_Hill_regionApplicationNo;
 
 	/* New Global Strings */
-	protected static String AppNum, DOB, NewLLNumber, NewDLApplicationNo, NewDLNumber, pinnumber, question,code;
+	protected static String AppNum, DOB, NewLLNumber, NewDLApplicationNo, NewDLNumber, pinnumber, question, code;
 	protected static String otptextineKYCform;
 	protected static String stcode;
 	protected static SimpleDateFormat df = new SimpleDateFormat();
@@ -844,7 +828,6 @@ public class BasePage extends ReportLibrary {
 	}
 
 	protected boolean Random_Datepicker(WebDriver driver) {
-		@SuppressWarnings("unused")
 		boolean stepStatus;
 
 		String str;
@@ -1071,6 +1054,7 @@ public class BasePage extends ReportLibrary {
 
 	}
 
+	@SuppressWarnings("unused")
 	protected boolean Slot_booking(WebDriver driver, String ObjectXpath, String ObjectXpath1) {
 
 		boolean stepStatus = true;
@@ -1188,6 +1172,7 @@ public class BasePage extends ReportLibrary {
 
 	}
 
+	@SuppressWarnings("resource")
 	public static void BackupFile(String SourceFileName, String DestinationFileName) throws IOException {
 
 		String Filesource = "DataFiles\\" + SourceFileName + ".xlsx";
@@ -1407,9 +1392,9 @@ public class BasePage extends ReportLibrary {
 		System.out.println(dateFormat.format(yesterday()));
 		return dateFormat.format(yesterday());
 	}
-	
-	/*===============================*/
-	
+
+	/* =============================== */
+
 	public Map<String, String> getfield(String rtocode) {
 
 		Map<String, String> data = new HashMap<>();
@@ -1423,7 +1408,7 @@ public class BasePage extends ReportLibrary {
 			// System.out.println("Column Count: " + colcount);
 			for (int i = 0; i <= rowcount; i++) {
 				String rtcode = ws1.getRow(i).getCell(1).getStringCellValue();
-			//	System.out.println(rtcode);
+				// System.out.println(rtcode);
 				if (rtcode.equalsIgnoreCase(rtocode.trim())) {
 					for (int j = 0; j < colcount; j++) {
 						String header = ws1.getRow(0).getCell(j).getStringCellValue();
