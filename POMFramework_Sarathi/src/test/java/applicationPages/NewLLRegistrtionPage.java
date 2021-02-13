@@ -1654,7 +1654,7 @@ public class NewLLRegistrtionPage extends BasePage {
 					}
 					count++;
 				} else {
-					System.out.println("#######################Pleasae Check OTP Section###########################");
+					//System.out.println("#######################Pleasae Check OTP Section###########################");
 				}
 			}
 			// System.out.println(count);

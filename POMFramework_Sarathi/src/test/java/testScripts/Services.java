@@ -28,7 +28,7 @@ public class Services extends BaseClass {
 
 		dl = new DLModule(currentdriver);
 		dl.StartAPP();
-		dl.PerformJob();
+		dl.selectState();
 		dl.Validate_Service();
 		
 	}

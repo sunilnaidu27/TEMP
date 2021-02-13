@@ -74,7 +74,7 @@ public class DLModule extends BasePage {
 		flows.VerifyFlows();
 	}
 
-	public void PerformJob() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
+	public void selectState() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
 		loaddata();
 		stcode = getdata("State");
 		NewDLSubmissionPage = new NewDLSubmissionPage(driver);

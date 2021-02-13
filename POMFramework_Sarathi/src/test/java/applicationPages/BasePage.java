@@ -57,7 +57,7 @@ public class BasePage extends ReportLibrary {
 			Endorsement_to_drive_in_Hill_regionApplicationNo;
 
 	/* New Global Strings */
-	protected static String AppNum, DOB, NewLLNumber, NewDLApplicationNo, NewDLNumber, pinnumber, question, code;
+	protected static String AppNum, DOB, NewLLNumber,LLBacklogNumber,NewDLApplicationNo, NewDLNumber, pinnumber, question, code;
 	protected static String otptextineKYCform;
 	protected static String stcode;
 	protected static SimpleDateFormat df = new SimpleDateFormat();

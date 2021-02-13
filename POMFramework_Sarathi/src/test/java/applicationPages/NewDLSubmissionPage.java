@@ -86,6 +86,36 @@ public class NewDLSubmissionPage extends BasePage {
 
 	public void clickon_Contuinebutton() {
 		stepstatus = basepage.clickElement(Contuine);
+		ConnecttoExcel(prop.getProperty("eKYC"), prop.getProperty("DataFile_State"));
+		if (outcome.equalsIgnoreCase("Y")) {
+			NewLLRegistrtionPage NewLLRegistrtionPage = new NewLLRegistrtionPage(driver);
+			NewLLRegistrtionPage.clickonapplyonApplicantdoesnotholdAadhaarnumber();
+			NewLLRegistrtionPage.clickonapplyonSubmittwobutton();
+			NewLLRegistrtionPage.SetMobilenumber(getdata("Phone"));
+			NewLLRegistrtionPage.ClickonGenerateOTP();
+			String env = getdata("ApplicationEnvironment");
+			if (env.equalsIgnoreCase("SarathiCOV")) {
+				try {
+					NewLLRegistrtionPage.Getlogotp(prop.getProperty("SarathiCOVeKYCLogURL"));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else if (env.equalsIgnoreCase("SarathiProd")) {
+				try {
+					NewLLRegistrtionPage.Getlogotp(prop.getProperty("SarathiprodeKYCLogURL"));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else {
+				System.out.println("Log URL is not matched.Please try again");
+			}
+			NewLLRegistrtionPage.ClickonAuthenticateWithSarathibutton();
+		} else if (outcome.equalsIgnoreCase("N")) {
+			System.out.println("Processsing Further");
+		} else {
+			System.out.println("************Before_ApplicationSubmission_Checks_Camp=Y******************");
+		}
+
 		reportEvent(stepstatus, "Able to click Contuinebutton", "Unable to click Contuinebutton", driver, true);
 	}
 
@@ -123,7 +153,8 @@ public class NewDLSubmissionPage extends BasePage {
 
 	public void clickon_Submitbutton() {
 		stepstatus = basepage.clickElement(Submit);
-		//reportEvent(stepstatus, "Able to click Submitbutton", "Unable to click Submitbutton", driver, true);
+		// reportEvent(stepstatus, "Able to click Submitbutton", "Unable to click
+		// Submitbutton", driver, true);
 		if (basepage.alertExist(driver)) {
 			basepage.acceptAlert(driver);
 		} else {
@@ -140,6 +171,7 @@ public class NewDLSubmissionPage extends BasePage {
 
 	@FindBy(how = How.XPATH, using = "//a[text()=' Driving Licence ']")
 	WebElement DrivingLicence;
+
 	public void Mouserhoveron_DrivingLicence() {
 		stepstatus = basepage.mouseHover(DrivingLicence, driver);
 		reportEvent(stepstatus, "Able to do Mousehover action on DrivingLicence",

@@ -125,7 +125,7 @@ public class UploadPhoto_SignaturePage extends BasePage {
 	WebElement Sucess;
 
 	public void Clickon_SavephotoandSignature() {
-		wait(4);
+		wait(3);
 
 		if (isEnabled(SavephotoandSignature)) {
 			stepstatus = basepage.clickElement(SavephotoandSignature);

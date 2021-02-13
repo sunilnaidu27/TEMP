@@ -69,7 +69,7 @@ public class LoginRTO extends BasePage {
 			stepstatus = basepage.clickElement(Singin);
 		}
 
-		//VerifyRTOSelection();
+		VerifyRTOSelection();
 	}
 
 	public void SetCaptcha() {

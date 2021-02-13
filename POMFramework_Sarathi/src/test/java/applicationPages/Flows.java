@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -88,10 +89,10 @@ public class Flows extends BasePage {
 	}
 
 	public void Verify_ApplicationCurrentStatus() throws IOException, InterruptedException {
-		scrooldown(driver);
 		wait(1);
 		if (driver.getPageSource().contains("Stage(s) to be Completed")) {
 			System.out.println("Starting Public Side Flows");
+			scrooldown(driver);
 			Initiate_Public_Flows();
 		}
 
@@ -100,21 +101,13 @@ public class Flows extends BasePage {
 			if (driver.getPageSource().contains("Date of Birth")) {
 				System.out.println(
 						"Applicatioin is under processing at RTO Level.Please wait Logging into for RTO process");
+				scrooldown(driver);
 				Login();
 			} else {
 				System.out.println("Applicatioin is under processing at RTO Level.Please wait starting RTO process");
 				RTOLevel_Status();
 			}
-		}
-
-		// else if (driver.getPageSource().contains("Application is under processing at
-		// RTO Level.")
-		// && isEnabled(Processflowbutton) == true) {
-		// System.out.println("Applicatioin is under processing at RTO Level.Please wait
-		// starting RTO process");
-		// }
-
-		else if (driver.getPageSource().contains("DL Backlog Saved Successfully......")) {
+		} else if (driver.getPageSource().contains("DL Backlog Saved Successfully......")) {
 			System.out.println("Continueing DL Backlog Approval Process");
 			RTOLevel_Status();
 		}
@@ -203,13 +196,13 @@ public class Flows extends BasePage {
 					menuitem.Click_on_processflow();
 					CapturePhotoandSignature();
 					RTOLevel_Status();
-				}else if (rtoflowtext.contains("CAPTURE PHOTO AND SIGNATURE OF APPLICANT")) {
+				} else if (rtoflowtext.contains("CAPTURE PHOTO AND SIGNATURE OF APPLICANT")) {
 					wait(2);
 					menuitem.Click_on_processflow();
 					OldCaptureBiometricsatFirefox();
 					RTOLevel_Status();
-				} 
-				
+				}
+
 				else if (rtoflowtext.contains("RECORDING LL TEST RESULTS")) {
 					menuitem.Click_on_processflow();
 					RecordLLTestResults();
@@ -219,8 +212,6 @@ public class Flows extends BasePage {
 					RTOLevel_Status();
 				} else if (rtoflowtext.contains("PRINTING OF LEARNING LICENCE")) {
 					LLPrint();
-					// RTOLevel_Status();
-					UpdateLLValidities();
 				} else if (rtoflowtext.contains("RECORD TEST RESULTS OF DRIVING TEST")) {
 					menuitem.Click_on_processflow();
 					RecordDLTestResults();
@@ -264,7 +255,7 @@ public class Flows extends BasePage {
 									"Process Flow Button is not Available and " + Allotmentinfonotavailable.getText());
 							clickElement(Logout);
 							wait(2);
-							driver.close();
+							driver.quit();
 						}
 					}
 
@@ -279,13 +270,13 @@ public class Flows extends BasePage {
 					System.out.println("RTO Flows has been Completed for the Application number: "
 							+ getdata("ApplicationNo") + " and  " + CaptureCompletedText.getText());
 					clickElement(Logout);
-					driver.close();
+//					driver.quit();
 				} else if (driver.getPageSource()
 						.contains("Application for  DL Backlog entry has been approved successfully") == true) {
 					System.out.println(CaptureCompletedTextforbacklog.getText() + " for the Application Number: "
 							+ getdata("ApplicationNo"));
 					clickElement(Logout);
-					driver.close();
+					driver.quit();
 				}
 
 			}
@@ -309,7 +300,6 @@ public class Flows extends BasePage {
 							try {
 								UploadDocuments();
 							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						} else if (flowtext.contains("UPLOAD PHOTO AND SIGNATURE")) {
@@ -336,7 +326,6 @@ public class Flows extends BasePage {
 			try {
 				Verify_ApplicationCurrentStatus();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -427,15 +416,16 @@ public class Flows extends BasePage {
 
 	public void Scrutiny() {
 		scrooldown(driver);
-		//if (isDisplayed(labelforPhotoSign) == false) {
-			Scrutiny = new ScrutinyPage(driver);
-			Scrutiny.Clickon_VerificationofDocuments_Link();
-			Scrutiny.Clickon_prooflinks();
-			Scrutiny.Clickon_Scrutinybutton();
-		//} else {
-		//	System.out.println("Displaying message --> Photo and Signature are Visible Properly");
-		//	driver.findElement(By.xpath("//input[@type='radio'][1]")).click();
-		//}
+		// if (isDisplayed(labelforPhotoSign) == false) {
+		Scrutiny = new ScrutinyPage(driver);
+		Scrutiny.Clickon_VerificationofDocuments_Link();
+		Scrutiny.Clickon_prooflinks();
+		Scrutiny.Clickon_Scrutinybutton();
+		// } else {
+		// System.out.println("Displaying message --> Photo and Signature are Visible
+		// Properly");
+		// driver.findElement(By.xpath("//input[@type='radio'][1]")).click();
+		// }
 
 	}
 
@@ -458,13 +448,14 @@ public class Flows extends BasePage {
 		profile.setPreference("permissions.default.desktop-notification", 1);
 		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 		capabilities.setCapability(FirefoxDriver.PROFILE, profile);
-	
+
 		capabilities.setCapability("firefox_binary",
 				new File("C:\\Program Files\\Mozilla Firefox\\firefox.exe").getAbsolutePath());
 		profile.setPreference("media.navigator.permission.disabled", true);
 		profile.setPreference("media.navigator.streams.fake", true);
 		WebDriver driverobj = new FirefoxDriver(capabilities);
-		driverobj.get("https://sarathiprod.nic.in/cas/login?service=https%3A%2F%2Fsarathiprod.nic.in%2Fsarathiservice%2Fsarathilogin.do");
+		driverobj.get(
+				"https://sarathiprod.nic.in/cas/login?service=https%3A%2F%2Fsarathiprod.nic.in%2Fsarathiservice%2Fsarathilogin.do");
 		driverobj.manage().window().maximize();
 		driverobj.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		LoginRTO RTO = new LoginRTO(driverobj);
@@ -496,7 +487,7 @@ public class Flows extends BasePage {
 		menuitem.Click_on_processflow();
 		scrooldown(driverobj);
 		driverobj.findElement(By.xpath("//div[@id='dlbacklogApproveId']/following::input[1]")).click();
-		driverobj.close();
+		driverobj.quit();
 	}
 
 	public void RecordLLTestResults() throws IOException {
@@ -605,7 +596,7 @@ public class Flows extends BasePage {
 		if (driver.getPageSource().contains("For this RTO Dispatch agency Master details not avaliable")) {
 			clickElement(Logout);
 			wait(2);
-			driver.close();
+			driver.quit();
 		} else {
 			System.out.println("Implement Pending for this FLOW");
 		}
@@ -615,7 +606,7 @@ public class Flows extends BasePage {
 	public void ApproveDLBacklog() {
 		scrooldown(driver);
 		DL_Backlog DL_Backlog = new DL_Backlog(driver);
-		//driver.findElement(By.xpath("//div[@id='dlbacklogApproveId']/following::input[1]")).click();
+		// driver.findElement(By.xpath("//div[@id='dlbacklogApproveId']/following::input[1]")).click();
 		try {
 			DL_Backlog.Verify_GenerateOTPforApproval();
 		} catch (IOException e) {
@@ -631,24 +622,81 @@ public class Flows extends BasePage {
 		LLPrint.Set_Application_Number(getdata("ApplicationNo"));
 		LLPrint.Clickon_ViewApplications();
 		LLPrint.ClickonLicNummbertoPrint();
-		LLPrint.ClickonHome();
-		LLPrint.Clickon_Logout_Button();
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		int size = tabs.size();
+		System.out.println("Size of windows" + size);
+		if (size > 1) {
+			driver.switchTo().window(tabs.get(1));
+			if (driver.getPageSource()
+					.contains("No Complete Details Available like(Images/Personal Data/Licence Data)")) {
+				System.out.println("New Error window opened");
+				driver.switchTo().window(tabs.get(1)).close();
+				driver.switchTo().window(tabs.get(0));
+				LLPrint.Clickon_Logout_Button();
+				try {
+					UpdateLLValidities();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+		} else {
+			System.out.println("There is no new window opened.");
+			removeDownloadpopup();
+			LLPrint.ClickonHome();
+			LLPrint.Clickon_Logout_Button();
+			try {
+				UpdateLLValidities();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 	public void DLPrint() {
 		DLPrint = new DLPrintpage(driver);
-		DLPrint.ClickonPaperCard();
-		DLPrint.ClickonTodaysDate();
-		DLPrint.ClickonYes();
-		DLPrint.ClickonSubmit();
-		DLPrint.Clickon_PrintALL();
-		DLPrint.ClickonProceed();
+
+		if (driver.getPageSource()
+				.contains("You do not have permission to view this page or perform this action") == false) {
+			DLPrint.ClickonPaperCard();
+			DLPrint.ClickonTodaysDate();
+			DLPrint.ClickonYes();
+			DLPrint.ClickonSubmit();
+			DLPrint.Clickon_PrintALL();
+			DLPrint.ClickonProceed();
+		} else {
+			driver.findElement(By.xpath("//span[text()='HOME']")).click();
+			driver.quit();
+		}
+
 	}
 
 	public void DLExtract() {
 		DL_Extract = new DL_Service_DLExtract(driver);
 		DL_Extract.Clickon_submitin_DLExtact();
 		// DL_Extract.Clickon_Approve_DLExtact();
+	}
+
+	public void removeDownloadpopup() {
+		Robot bot;
+		try {
+			bot = new Robot();
+			wait(1);
+			bot.keyPress(KeyEvent.VK_CONTROL);
+			bot.keyPress(KeyEvent.VK_J);
+			bot.keyRelease(KeyEvent.VK_CONTROL);
+			bot.keyRelease(KeyEvent.VK_J);
+			String winHandleBefore = driver.getWindowHandle();
+			for (String winHandle : driver.getWindowHandles()) {
+				driver.switchTo().window(winHandle);
+				closeWindowByTitle("Downloads", driver);
+				driver.switchTo().window(winHandleBefore);
+			}
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public void UpdateLLValidities() throws IOException {
@@ -660,21 +708,7 @@ public class Flows extends BasePage {
 		String txtdata = driver.findElement(By.xpath("(//table[@class='table'])[1]/tbody/tr[3]/td[1]")).getText();
 		if (txtdata.equals(getdata("LLNumber"))) {
 			scrooldown(driver);
-			Robot bot;
 			try {
-				bot = new Robot();
-				wait(1);
-				bot.keyPress(KeyEvent.VK_CONTROL);
-				bot.keyPress(KeyEvent.VK_J);
-				bot.keyRelease(KeyEvent.VK_CONTROL);
-				bot.keyRelease(KeyEvent.VK_J);
-				String winHandleBefore = driver.getWindowHandle();
-				for (String winHandle : driver.getWindowHandles()) {
-					driver.switchTo().window(winHandle);
-					closeWindowByTitle("Downloads", driver);
-					driver.switchTo().window(winHandleBefore);
-				}
-				
 				driver.findElement(By.xpath("//button[@name='confirmDate']")).click();
 				wait(1);
 				driver.findElement(By.xpath("//button[text()='Yes']")).click();
@@ -682,9 +716,6 @@ public class Flows extends BasePage {
 				driver.findElement(By.xpath("//button[text()='OK']")).click();
 				Login();
 				RTOLevel_Status();
-			} catch (AWTException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (ElementClickInterceptedException e) {
 				driver.findElement(By.xpath("//button[@name='confirmDate']")).click();
 				wait(1);
@@ -695,7 +726,6 @@ public class Flows extends BasePage {
 				RTOLevel_Status();
 			}
 
-			
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package applicationPages;
 
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -179,8 +180,10 @@ public class CapturebiometricsPage extends BasePage {
 
 	public void EndCrop() {
 		wait(1);
+
 		stepstatus = basepage.clickElement(endcrop);
 		reportEvent(stepstatus, "Able to click on End Crop", "Unable click on End Crop", driver, true);
+
 	}
 
 	public void Clickon_CropSelected() {

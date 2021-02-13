@@ -37,18 +37,18 @@ public class NewDL extends BaseClass {
 
 	}
 
-	@Test(invocationCount = 9)
+	@Test(invocationCount = 1)
 	public void NewDL_Public() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
 
 		dl = new DLModule(currentdriver);
 		dl.StartAPP();
-		dl.PerformJob();
+		dl.selectState();
 		dl.Initiating_DL();
 		dl.Validating_Flows();
 
 	}
 
-	@Test(invocationCount = 16)
+	@Test(invocationCount = 2)
 	public void DLBacklog() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
 
 		dl = new DLModule(currentdriver);

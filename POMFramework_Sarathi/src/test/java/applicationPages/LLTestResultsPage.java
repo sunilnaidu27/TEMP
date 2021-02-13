@@ -110,9 +110,9 @@ public class LLTestResultsPage extends BasePage {
 		if (isDisplayed(Afterofflinetestlicno) == false) {
 			System.out.println("Processing Further Flows");
 		} else {
-			String Licno = Afterofflinetestlicno.getText();
-			System.out.println(Licno.trim());
-			setdata("LLNumber", Licno.trim());
+			NewLLNumber = Afterofflinetestlicno.getText();
+			System.out.println(NewLLNumber.trim());
+			setdata("LLNumber", NewLLNumber.trim());
 			//UpdateLLValidities();
 
 		}

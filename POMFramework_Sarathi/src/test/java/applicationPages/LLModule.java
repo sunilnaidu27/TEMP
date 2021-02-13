@@ -554,7 +554,7 @@ public class LLModule extends BasePage {
 		LLBacklogPage.Clickon_LL_Link();
 		LLBacklogPage.Clickon_LLBacklog();
 		LLBacklogPage.ArrangeDataSet();
-		LLBacklogPage.Set_Issuedate("03-01-2021");
+		LLBacklogPage.Set_Issuedate("03-02-2021");
 		LLBacklogPage.Set_OriginalLLno(getdata("OriginalLLno"));
 		LLBacklogPage.Set_NumaricLLNo(getdata("NumaricLLNo"));
 		WebElement refno = driver
@@ -569,6 +569,7 @@ public class LLModule extends BasePage {
 		String LLno = LLtext.getText();
 		System.out.println(LLno);
 		LLBacklogPage.setdata("LLNumber", LLno.substring(17).trim());
+		LLBacklogNumber = LLno.substring(17).trim();
 		LLBacklogPage.Clickon_LLLink();
 		LLBacklogPage.Clickon_LLBacklogApprove();
 		LLBacklogPage.Enter_LLBacklogApplicationno();

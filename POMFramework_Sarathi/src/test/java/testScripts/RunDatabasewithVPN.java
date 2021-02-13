@@ -12,7 +12,7 @@ import frameworkLibrary.BaseClass;
 public class RunDatabasewithVPN extends BaseClass {
 	WebDriver driver;
 
-	@Test
+	@Test(invocationCount=1)
 	public void DataRefresh() throws ClassNotFoundException, SQLException, IOException {
 		Data_Refreshfrom_Database db = new Data_Refreshfrom_Database(driver);
 		db.ConnectDB(getdata("UserQuery"), getdata("UserDesiredFileName"), getdata("UserdesiredSheetName"));

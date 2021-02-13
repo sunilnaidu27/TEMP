@@ -3,17 +3,23 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <test name="Test(failed)">
     <classes>
-      <class name="testScripts.NewLL">
+      <class name="testScripts.TestGeneric">
         <methods>
           <include name="Predatacheck"/>
           <include name="aftersuite"/>
-          <include name="NewLL_Public"/>
           <include name="beforesuite"/>
+          <include name="CloseBrowser"/>
+          <include name="TC03"/>
+          <include name="TC02"/>
+          <include name="TC07"/>
+          <include name="TC04"/>
+          <include name="TC01"/>
+          <include name="TC06"/>
+          <include name="TC05"/>
           <include name="beforemethod"/>
           <include name="aftermethod"/>
-          <include name="CloseBrowser"/>
         </methods>
-      </class> <!-- testScripts.NewLL -->
+      </class> <!-- testScripts.TestGeneric -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

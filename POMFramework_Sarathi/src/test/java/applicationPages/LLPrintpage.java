@@ -108,7 +108,7 @@ public class LLPrintpage extends BasePage {
 	}
 	public void ClickonLicNummbertoPrint() {
 		stepstatus = basepage.clickElement(printLLNum);
-		wait(3);
+		wait(3);	
 		reportEvent(stepstatus, "Able to click LLnumber to Print", "Unable to click LLnumber to Print", driver, true);
 	}
 	public void ClickonHome() {

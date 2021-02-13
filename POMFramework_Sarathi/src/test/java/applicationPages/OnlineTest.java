@@ -158,7 +158,6 @@ public class OnlineTest extends BasePage {
 			System.out.println("URL is not matched.Please try again");
 		}
 
-		// driver.navigate().to("https://sarathicov.nic.in:8443/sarathiservice/authenticationaction.do");
 		driver.findElement(By.xpath("//input[@name='llappln']")).sendKeys(getdata("ApplicationNo"));
 		driver.findElement(By.xpath("//input[@name='llappln']")).sendKeys(Keys.TAB);
 		code = getdata("RTOCode");
@@ -168,7 +167,6 @@ public class OnlineTest extends BasePage {
 		if (outcome.equalsIgnoreCase("A")) {
 
 			env = getdata("ApplicationEnvironment");
-		//	System.out.println(env);
 			if (env.equalsIgnoreCase("SarathiCOV")) {
 				loaddata();
 				Getlogotp(prop.getProperty("SarathiCOVeKYCLogURL"));
@@ -189,7 +187,7 @@ public class OnlineTest extends BasePage {
 			driver.findElement(By.xpath("//input[@name='pwd']")).sendKeys(password.trim());
 			driver.findElement(By.xpath("(//input)[@value='Login'][1]")).click();
 			wait(1);
-			driver.findElement(By.xpath("(//input)[@value='PROCEED']")).click();
+		//	driver.findElement(By.xpath("(//input)[@value='PROCEED']")).click();
 		} else if (outcome.equalsIgnoreCase("S")) {
 			if (driver.getPageSource().contains("Date of Birth")) {
 				driver.findElement(By.xpath("//input[@name='dob']")).sendKeys(getdata("DateofBirth"));
@@ -296,7 +294,7 @@ public class OnlineTest extends BasePage {
 				System.out.println("Selected Result as FAIL");
 				TestFailureCase(prop.getProperty("SarathiCOVeKYCLogURL"));
 			} else if (ExamStatus.equalsIgnoreCase("EXEMPT")) {
-				System.out.println("Selectrd Result as EXEMPT");
+				System.out.println("Selected Result as EXEMPT");
 			} else if (ExamStatus.equalsIgnoreCase("PossibleCases")) {
 				System.out.println("Selected Possible Cases");
 				PossibleCases(prop.getProperty("SarathiCOVeKYCLogURL"));
@@ -377,9 +375,9 @@ public class OnlineTest extends BasePage {
 
 							if (driver.getPageSource().contains("LL Stall Exam Result") == true) {
 								if (driver.findElement(By.xpath("(//h3)[4]")).isDisplayed() == true) {
-									String LicTxt = driver.findElement(By.xpath("(//h3)[4]")).getText();
-									System.out.println(LicTxt.substring(23).trim());
-									setdata("LLNumber", LicTxt.substring(23).trim());
+									NewLLNumber = driver.findElement(By.xpath("(//h3)[4]")).getText();
+									System.out.println(NewLLNumber.substring(23).trim());
+									setdata("LLNumber", NewLLNumber.substring(23).trim());
 									break outerloop;
 								} else {
 									System.out.println("There is no Test at approval check");
